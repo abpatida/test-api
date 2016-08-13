@@ -236,7 +236,7 @@ module.exports = function (user) {
         var Project = user.app.models.Project;
 
         console.log("Method string " + ctx.methodString);
-        console.log("Matched01 " + ctx.methodString.search("find"));
+       // console.log("Matched01 " + ctx.methodString.search("find"));
         if (ctx.methodString.search("find") > -1) {
             console.log("Matched " + ctx.methodString.search("find"));
 
@@ -246,7 +246,7 @@ module.exports = function (user) {
                     scope: {include: [{relation: "members"}]}
                 }]
             }, function (err, user) {
-                console.log("user " + JSON.stringify(user));
+              //  console.log("user " + JSON.stringify(user));
                 user = JSON.parse(JSON.stringify(user));
                 if (user.roles[0].name == 'superadmin') {
                     next();

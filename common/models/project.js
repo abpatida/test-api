@@ -62,6 +62,7 @@ module.exports = function (Project) {
             next();
             return;
         }
+        //console.log("Result01 "+JSON.stringify(ctx.result));
         ProjectUser = Project.app.models.ProjectUser;
         User = Project.app.models.user;
 
@@ -71,7 +72,7 @@ module.exports = function (Project) {
 
 
             User.findById(ctx.req.accessToken.userId, {include: [{relation: "roles"}, {"relation": "projects"}]}, function (err, user) {
-
+            //console.log("User "+JSON.stringify(user));
                 user = JSON.parse(JSON.stringify(user));
                 if (user.roles[0].name == 'superadmin') {
                     next();
@@ -81,6 +82,7 @@ module.exports = function (Project) {
                     next();
                 }
                 else {
+                   //  console.log("User "+JSON.stringify(user));
                     var ids = [];
 
                     async.forEach(user.projects, function (project, cb1) {
@@ -95,17 +97,20 @@ module.exports = function (Project) {
                                 ctx.result = [];
 
                             }
+                            // console.log("Got it "+JSON.stringify(ctx.result));
                             next();
                             return;
                         }
+                        //console.log("Ids "+ids);
                         async.forEach(ctx.result, function (pr, cb2) {
-
-                            if (ids.indexOf(pr.id) > -1) {
+                        //console.log("pr "+ids.indexOf(pr.id.toString()));
+                            if (ids.indexOf(pr.id.toString()) > -1) {
                                 mProjects.push(pr);
                             }
                             cb2();
                         }, function () {
                             ctx.result = mProjects;
+                            console.log("Result "+JSON.stringify(ctx.result));
                             next();
                         })
                     })
