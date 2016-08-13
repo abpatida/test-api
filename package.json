@@ -6,7 +6,7 @@
   "license": "ab",
   "repository": {
     "type": "git",
-    "url": "https://ap0011@bitbucket.org/merramohalla/meramohalla.git"
+    "url": "https://github.com/abpatida/test-api.git"
   },
   "scripts": {
     "start": "node server/server.js",
