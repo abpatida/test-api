@@ -1,0 +1,34 @@
+{
+  "meramohalla": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "meramohalla",
+    "name": "meramohalla",
+    "connector": "mongodb"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "mail.meramohalla.com",
+        "secure": false,
+        "port": 26,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "systemadmin@meramohalla.com",
+          "pass": "cWy!tQPr$(6%Y"
+        }
+      }
+    ]
+  },
+  "meraMohallaStorage": {
+    "name": "merraMohallaStorage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/storage"
+  }
+}

@@ -1,0 +1,5 @@
+/client/app/bower_components/
+/client/app/assets/
+/client/app/
+/client/test/
+/node_modules/

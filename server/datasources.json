@@ -1,0 +1,28 @@
+{
+  "testApi": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "testApi",
+    "name": "testApi",
+    "connector": "mongodb"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "YOUR_EMAIL_HOST",
+        "secure": false,
+        "port": 26,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "YOUR_USERNAME",
+          "pass": "PASSWORD"
+        }
+      }
+    ]
+  }
+}

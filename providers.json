@@ -1,0 +1,39 @@
+{
+  "local": {
+    "provider": "local",
+    "module": "passport-local",
+    "usernameField": "username",
+    "passwordField": "password",
+    "authPath": "/auth/local",
+    "successRedirect": "/auth/account",
+    "failureRedirect": "/local",
+    "failureFlash": true
+  },
+  "facebook-login": {
+    "provider": "facebook",
+    "module": "passport-facebook",
+    "clientID": "221034974906628",
+    "clientSecret": "991941e3ff81d823f59eea5e16f09119",
+    "callbackURL": "https://meramohalla.com/auth/facebook/callback",
+    "authPath": "/auth/facebook",
+    "callbackPath": "/auth/facebook/callback",
+    "successRedirect": "/auth/account/facebook",
+    "failureRedirect": "/auth/error",
+    "failureFlash": true
+  },
+  "google-login": {
+    "provider": "google",
+    "module": "passport-google-oauth",
+    "strategy": "OAuth2Strategy",
+    "clientID": "613087234040-61ev2sfs7e8ccf52d0kp0ikk07q4qbv6.apps.googleusercontent.com",
+    "clientSecret": "unX5U2dM1Ikm-_erOYLfH39-",
+    "callbackURL": "https://meramohalla.com/auth/google/callback",
+    "authPath": "/auth/google",
+    "callbackPath": "/auth/google/callback",
+    "successRedirect": "/auth/account/google",
+    "failureRedirect": "/auth/error",
+"scope": ["email", "profile"],
+    "failureFlash": true
+  }
+
+}

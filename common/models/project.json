@@ -1,0 +1,58 @@
+{
+  "name": "Project",
+  "plural": "Projects",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required":true
+    },
+    "description":{
+      "type":"string"
+    },
+    "createdById":{
+      "type":"string"
+    }
+  },
+  "validations": [],
+  "relations": {
+     "members": {
+      "type": "hasMany",
+      "model": "user",
+      "foreignKey": "projectId",
+      "through": "ProjectUser"
+    },
+    "createdBy": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "createdById"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "superadmin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

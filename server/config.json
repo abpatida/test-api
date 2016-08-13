@@ -1,0 +1,31 @@
+{
+  "restApiRoot": "/api",
+  "host":"localhost",
+  "port": 4783,
+  "domain":"http://localhost:4783",
+  "cookieSecret": "F1FEE670-3C72-11E4-916C-0800200C9A66",
+  "from": "FROM_EMAIL_ADDRESS",
+  "remoting": {
+    "context": {
+      "enableHttpContext": false
+    },
+    "rest": {
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "100kb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "100kb"
+    },
+    "cors": false,
+    "errorHandler": {
+      "disableStackTrace": false
+    }
+  },
+  "legacyExplorer": false
+
+}

@@ -1,0 +1,38 @@
+<body style='padding: 0px; margin: 0px;'><div align="center">
+    <table width='100%' border='0' cellspacing='0' cellpadding='0' bgcolor='#eff3f8'>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td align='center'><span style='color:#4db3a4;font-size:26px;'>MeraMohalla</span></td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>
+                <table align='center' width='700' border='0' bgcolor='#ffffff'><tr><td>
+            <div style='color:#646464;font-size:13px;margin:20px;'>
+                <div style='color:#646464;font-size:13px;margin:20px;'>
+                    <div>
+                        <div style='float:left;width:auto;display:inline-block;'>
+
+                        </div><div>Hi <b><%= user.displayName %></b>, Welcome to MeraMohalla!!<br><br>
+                        <%=user.createdByName%> has added you as a franchisee</div>
+                    </div>
+                        <br>
+                        Your username is <b><%= user.email %></b>.
+                    <br>
+                    Your password is <b><%= user.decryptPassword %></b>.
+                    <br>
+                        Please click below to activate your account <br><br>
+                        <div  style='margin-top:20px;'>
+                            <a  style='text-decoration: none;background-color:#4db3a4; color:#fff;display:inline-block;padding: 6px;' href="<%= verifyHref %> ">CONFIRM REGISTRATION</a>
+                        </div>
+                        <br><hr>
+                        <span style='float: left;'>Powered by MeraMohalla</span>
+                        <a style='color:#4db3a4;float:right;text-decoration: none;' target='_blank' href="http://www.zehntech.com">Zehntech Technologies</a>
+                </div><br>
+            </div>
+                </tr>
+                </table><br>
+            <span style='color:#999999;font-size:12px;margin-left:40%;'>2016 &copy; Zehntech Technologies. ALL Rights Reserved.</span>
+
+                </td></tr><tr><td>&nbsp;</td>
+        </tr>
+    </table>
+    </div>
+</body>

@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "sources": [
+      "../common/models",
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
+    ]
+  },
+  "accessToken": {
+    "dataSource": "testApi",
+    "public": true
+  },
+  "userCredential": {
+    "dataSource": "testApi",
+    "public": false
+  },
+  "userIdentity": {
+    "dataSource": "testApi",
+    "public": false
+  },
+  "AuthProvider": {
+    "dataSource": "testApi",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "testApi",
+    "public": false
+  },
+  "Email": {
+    "dataSource": "emailDs",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "testApi",
+    "public": true
+  },
+  "Role": {
+    "dataSource": "testApi",
+    "public": true
+  },
+  "Project": {
+    "dataSource": "testApi",
+    "public": true
+  },
+  "ProjectUser": {
+    "dataSource": "testApi",
+    "public": false
+  },
+  "user": {
+    "dataSource": "testApi",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": false
+    }
+  }
+}

@@ -1,0 +1,69 @@
+
+
+<link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
+
+<link rel="stylesheet" href="assets/styles/app.css" type="text/css"/>
+
+
+<body>
+
+<div class="dark bg-auto w-full">
+    <div class="fade-in-right-big smooth pos-rlt">
+<div class="center-block w-xxl w-auto-xs p-y-md">
+    <div class="navbar">
+        <div class="pull-center">
+            <a class="navbar-brand">
+                <div ui-include="'../assets/images/logo.svg'"></div>
+                <img src="../assets/images/logo.png" alt="." class="hide">
+                <span class="hidden-folded inline">MeraMohalla</span>
+            </a>
+        </div>
+    </div>
+    <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+        <div class="m-b text-sm">
+            Sign up to your MeraMohalla Account
+        </div>
+        <form name="form" class="form-validation" action="/invite?token=<%= token %>" method="post">
+
+            <div class="md-form-group">
+
+                <input required="" class="md-input" type="text" placeholder="Name" name="name"
+                       value="<%= user.name %>"/>
+                <label>Name</label>
+            </div>
+            <div class="md-form-group">
+
+                <input class="md-input" readonly type="email" placeholder="Email" name="email"
+                       value="<%= user.email %>"/>
+                <label>Email</label>
+            </div>
+
+            <div class="md-form-group">
+
+                <input class="md-input" type="password" minlength="8"
+                       title="Password must contain: Minimum 8 Characters" autocomplete="off" name="password"/>
+                <label>Password</label>
+            </div>
+            <div class="md-form-group">
+
+                <input class="md-input" type="password" autocomplete="off" name="confirmation"/>
+                <label>Re-type Your Password</label>
+            </div>
+            <div class="m-b-md">
+                <label class="md-check">
+                    <input type="checkbox" ng-model="agree" required><i class="primary"></i> Agree the <a href>terms and
+                        policy</a>
+                </label>
+            </div>
+
+
+            <button type="submit" id="register-submit-btn" class="btn primary btn-block p-x-md">
+                Sign up
+            </button>
+
+        </form>
+    </div>
+</div>
+</div></div>
+</body>
+
