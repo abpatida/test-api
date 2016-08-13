@@ -4,14 +4,13 @@ module.exports = function (Project) {
 
 
     Project.afterRemote('**', function (ctx, project, next) {
-        console.log("After Result01 " + JSON.stringify(ctx.result));
-        console.log("Method string " + ctx.methodString);
+
         ProjectUser = Project.app.models.ProjectUser;
         User = Project.app.models.user;
         if (ctx.methodString == "Project.prototype.__get__members" || ctx.methodString == "Project.prototype.__findById__members") {
-            console.log("Project " + ctx.req.params.id);
+
             User.findById(ctx.req.accessToken.userId, {include: [{relation: "roles"}, {"relation": "projects"}]}, function (err, user) {
-                console.log("user " + JSON.stringify(user));
+
                 user = JSON.parse(JSON.stringify(user));
                 if (user.roles[0].name == 'superadmin') {
                     next();
@@ -40,7 +39,6 @@ module.exports = function (Project) {
                                     ctx.result = err;
                                     next();
                                 } else {
-                                    console.log("Got  projects" );
                                     ctx.result = project;
                                     next();
                                 }
@@ -60,23 +58,20 @@ module.exports = function (Project) {
 
     })
     Project.afterRemote('*', function (ctx, project, next) {
-        console.log("After Result " + JSON.stringify(ctx.result));
         if (ctx.result == null || !ctx.result) {
             next();
             return;
         }
         ProjectUser = Project.app.models.ProjectUser;
         User = Project.app.models.user;
-        if (ctx.req) {
-            console.log("After access " + JSON.stringify(ctx.req.accessToken));
-        }
-        console.log("Method string " + ctx.methodString);
+
+
 
         if (ctx.methodString.search("find") > -1) {
 
 
             User.findById(ctx.req.accessToken.userId, {include: [{relation: "roles"}, {"relation": "projects"}]}, function (err, user) {
-                console.log("user " + JSON.stringify(user));
+
                 user = JSON.parse(JSON.stringify(user));
                 if (user.roles[0].name == 'superadmin') {
                     next();
@@ -89,11 +84,11 @@ module.exports = function (Project) {
                     var ids = [];
 
                     async.forEach(user.projects, function (project, cb1) {
-                        console.log("For project " + project.id);
+
                         ids.push(project.id);
                         cb1();
                     }, function () {
-                        console.log("For project 01 ");
+
                         var mProjects = [];
                         if (ctx.result.id) {
                             if (ids.indexOf(ctx.result.id.toString()) < 0) {
@@ -104,14 +99,13 @@ module.exports = function (Project) {
                             return;
                         }
                         async.forEach(ctx.result, function (pr, cb2) {
-                            console.log("Index " + ids.indexOf(pr.id));
+
                             if (ids.indexOf(pr.id) > -1) {
                                 mProjects.push(pr);
                             }
                             cb2();
                         }, function () {
                             ctx.result = mProjects;
-                            console.log("Result " + JSON.stringify(ctx.result));
                             next();
                         })
                     })

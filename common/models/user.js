@@ -1,6 +1,5 @@
 var config = require('../../server/config.json');
 var path = require('path');
-var GeoPoint = require('loopback').GeoPoint;
 var async = require('async');
 
 //var console = new winston.console({transports: transports});
@@ -8,17 +7,14 @@ var async = require('async');
 module.exports = function (user) {
 
     user.afterRemote('**', function (ctx, project, next) {
-        console.log("After Result01 " + JSON.stringify(ctx.result) + " " + ctx.methodString);
         if (ctx.result == null || !ctx.result) {
             next();
             return;
         }
-        ProjectUser = user.app.models.ProjectUser;
-        Project = user.app.models.Project;
-        if (ctx.req) {
-            console.log("After access " + JSON.stringify(ctx.req.accessToken));
-        }
-        console.log("Method string " + ctx.methodString);
+        var ProjectUser = user.app.models.ProjectUser;
+        var Project = user.app.models.Project;
+
+
 
         if (ctx.methodString == "user.prototype.__get__projects") {
 
@@ -28,7 +24,6 @@ module.exports = function (user) {
                     "relation": "projects"
                 }]
             }, function (err, user) {
-                console.log("user " + JSON.stringify(user));
                 user = JSON.parse(JSON.stringify(user));
                 if (user.roles[0].name == 'superadmin') {
                     next();
@@ -50,11 +45,9 @@ module.exports = function (user) {
                 if (err) {
                     console.log("Error in finding the project and user " + JSON.stringify(err));
                 } else if (!prUser) {
-                    console.log("Yay01 " + JSON.stringify(prUser));
                     ctx.result = [];
                     next();
                 } else {
-                    console.log("Yay02 " + JSON.stringify(prUser));
                     next();
                 }
             })
@@ -235,16 +228,13 @@ module.exports = function (user) {
 
 
     user.afterRemote('*', function (ctx, userData, next) {
-        console.log("After Result " + JSON.stringify(ctx.result));
         if (ctx.result == null || !ctx.result) {
             next();
             return;
         }
-        ProjectUser = user.app.models.ProjectUser;
-        Project = user.app.models.Project;
-        if (ctx.req) {
-            console.log("After access " + JSON.stringify(ctx.req.accessToken));
-        }
+        var ProjectUser = user.app.models.ProjectUser;
+        var Project = user.app.models.Project;
+
         console.log("Method string " + ctx.methodString);
         console.log("Matched01 " + ctx.methodString.search("find"));
         if (ctx.methodString.search("find") > -1) {
@@ -261,7 +251,6 @@ module.exports = function (user) {
                 if (user.roles[0].name == 'superadmin') {
                     next();
                 } else if (!user.projects || user.projects.length == 0) {
-                    console.log("Blank ");
                     ctx.result = [];
                     next();
                 }
@@ -271,7 +260,7 @@ module.exports = function (user) {
                     var canView = false;
                     async.forEach(user.projects, function (project, cb1) {
                         async.forEach(project.members, function (member, cb2) {
-                            console.log("For member " + member.id);
+
                             if ((ctx.methodString == "user.findById"||ctx.methodString == "user.findOne" ) && ctx.result.id == member.id) {
                                 canView = true;
                             }
@@ -289,9 +278,8 @@ module.exports = function (user) {
                         })
                         cb1();
                     }, function () {
-                        console.log("here");
+
                         if ((ctx.methodString == "user.findById"||ctx.methodString == "user.findOne" ) && canView) {
-                             console.log("Can view01");
                             next();
                         } else if ((ctx.methodString == "user.findById"||ctx.methodString == "user.findOne" ) && !canView) {
                             ctx.result = [];

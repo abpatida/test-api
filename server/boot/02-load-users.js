@@ -184,7 +184,7 @@ module.exports = function (app) {
                             users.forEach(function (user) {
                                 count2++;
                                 var role='developer';
-                                console.log("Count1 "+count1+" count2 "+count2);
+
                                 if(count1==count2 ){
                                     role='manager';
                                 }
@@ -196,7 +196,7 @@ module.exports = function (app) {
                                     if(err){
                                         console.log("Error in assigning member "+JSON.stringify(err));
                                     }else{
-                                        console.log("Member assigned successfully");
+
                                     }
                                 })
                             })
