@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MeraMohalla.iml" filepath="$PROJECT_DIR$/.idea/MeraMohalla.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/meramohalla.iml" filepath="$PROJECT_DIR$/.idea/meramohalla.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/test-api.iml" filepath="$PROJECT_DIR$/.idea/test-api.iml" />
     </modules>
   </component>
 </project>
